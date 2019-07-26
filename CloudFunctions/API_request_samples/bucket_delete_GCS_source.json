@@ -1,0 +1,9 @@
+"sourceArchiveUrl": "gs://<bucketname>/<zipcontainingcode>.zip",
+ "availableMemoryMb": 256,
+ "eventTrigger": {
+   "eventType": "providers/cloud.storage/eventTypes/object.change",
+   "resource": "projects/<projectname>/buckets/<bucketname>"
+ },
+ "entryPoint": "getrekt",
+ "name": "projects/<projectname>/locations/<zone>/functions/<cloudfuncname>",
+ "runtime": "python37"

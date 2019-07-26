@@ -1,0 +1,13 @@
+{
+  "sourceRepository": {
+    "url": "https://source.developers.google.com/projects/<projectname>/repos/<sourcebucketname>/revisions/f372aa4aaa5901b4d701677d99971cf87b5cffd0"
+  },
+  "entryPoint": "getrekt",
+  "name": "projects/<projectname>/locations/<zone>/functions/<functionname>",
+  "eventTrigger": {
+    "eventType": "providers/cloud.storage/eventTypes/object.finalize",
+    "resource": "projects/_/buckets/<triggerbucketname>"
+  },
+  "runtime": "python37",
+  "availableMemoryMb": 256
+
