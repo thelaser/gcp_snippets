@@ -1,0 +1,9 @@
+imports:
+- path: cloudsql.jinja
+- path: instance.jinja
+
+resources:
+- name: cloudsql
+  type: cloudsql.jinja
+- name: myinstance
+  type: instance.jinja

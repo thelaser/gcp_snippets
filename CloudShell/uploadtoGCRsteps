@@ -1,0 +1,6 @@
+docker build -t name .
+docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]
+install gcloud 
+gcloud auth configure-docker
+docker push [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[TAG]
+change image in ssh.cloud.google.com/cloudshell/environment/view
