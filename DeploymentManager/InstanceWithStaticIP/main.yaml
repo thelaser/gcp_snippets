@@ -3,7 +3,7 @@ imports:
 - path: instance.jinja
 
 resources:
-- name: myaddress
+- name: mydeployment-address
   type: addresses.jinja
-- name: myinstance
+- name: mydeployment-instance
   type: instance.jinja
