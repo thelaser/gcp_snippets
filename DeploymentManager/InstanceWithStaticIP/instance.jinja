@@ -16,7 +16,7 @@ resources:
         sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-9
         diskSizeGb: 20
         diskType: https://www.googleapis.com/compute/v1/projects/myplaygrounds-inter/zones/europe-west1-c/diskTypes/pd-ssd
-    - devicName: {{ env["deployment"] }}-standarddisk
+    - deviceName: {{ env["deployment"] }}-standarddisk
       type: PERSISTENT
       boot: false
       autoDelete: true
