@@ -1,7 +1,5 @@
 # Connecting to MySQL in PHP using PDO
 
-## [Source GitHub repo](https://github.com/taniarascia/pdo)
-
 Create a Simple Database App: Connecting to MySQL with PHP
 
 ### [Part 1: Create and Read](https://www.taniarascia.com/create-a-simple-database-app-connecting-to-mysql-with-php/)
@@ -18,3 +16,5 @@ Create a Simple Database App: Connecting to MySQL with PHP
 ## License
 
 The code is open source and available under the [MIT License](LICENSE.md).
+
+## [Source GitHub repo](https://github.com/taniarascia/pdo)
