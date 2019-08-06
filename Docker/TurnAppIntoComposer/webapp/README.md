@@ -1,5 +1,7 @@
 # Connecting to MySQL in PHP using PDO
 
+# [ORIGINAL GITHUB](https://github.com/taniarascia/pdo)
+
 Create a Simple Database App: Connecting to MySQL with PHP
 
 ### [Part 1: Create and Read](https://www.taniarascia.com/create-a-simple-database-app-connecting-to-mysql-with-php/)
