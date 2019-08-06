@@ -47,11 +47,11 @@ properties:
       region:
         type: string
         description: i.e. us-central1
-        default: us-central1
+        default: europe-west1
       zone:
         type: string
         description: i.e. us-central1-a
-        default: us-central1-a
+        default: europe-west1-c
       authorizedNetworks:
         type: array
         description: An array of allowed CIDR blocks

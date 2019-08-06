@@ -1,30 +1,31 @@
 resources:
-- name: mydeployedinstance2
+- name: {{ env["deployment"] }}-instance
   type: compute.v1.instance
   properties:
+  description: $(ref.{{ env['deployment'] }}-sql-ip.address)
+  description: $(ref.{{ env['deployment'] }}-sql-ip.address)
+  description: $(ref.{{ env['deployment'] }}-sql-ip.address)
+  description: $(ref.{{ env['deployment'] }}-sql-ip.address)
+  description: $(ref.{{ env['deployment'] }}-sql-ip.address)
+    description: $(ref.{{ env['deployment'] }}-sql-ip.address)
     tags:
       items:
-      - wave25
+      - {{ env["deployment"] }}-tag
     zone: europe-west1-c
-    machineType: https://www.googleapis.com/compute/v1/projects/myplaygrounds-inter/zones/europe-west1-c/machineTypes/custom-4-4096
+    machineType: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/europe-west1-c/machineTypes/custom-4-4096
     disks:
-    - deviceName: boot
+    - deviceName: {{ env["deployment"] }}-ssddisk
       type: PERSISTENT
       boot: true
       autoDelete: true
       initializeParams:
         sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-9
-        diskSizeGb: 20
+        diskSizeGb: 30
         diskType: https://www.googleapis.com/compute/v1/projects/myplaygrounds-inter/zones/europe-west1-c/diskTypes/pd-ssd
-    - devicName: added
-      type: PERSISTENT
-      boot: false
-      autoDelete: true
-      initializeParams:
-        diskSizeGb: 15
-        diskType: https://www.googleapis.com/compute/v1/projects/myplaygrounds-inter/zones/europe-west1-c/diskTypes/pd-standard
     networkInterfaces:
-    - network: projects/myplaygrounds-inter/global/networks/default
+    - network: projects/{{ env["project"] }}/global/networks/default
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
+    serviceAccounts:
+    - email: {{ env['project_number'] }}-compute@developer.gserviceaccount.com

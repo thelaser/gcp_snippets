@@ -38,6 +38,11 @@ resources:
         startTime: {{ properties['cloudsql']['backupStartTime'] }}
       ipConfiguration:
         authorizedNetworks: {{ properties['cloudsql']['authorizedNetworks'] }}
+        privateNetwork: /projects/{{ env["project"] }}/global/networks/default
+    ipAddresses:
+      - ipAddress: $(ref.{{ env['deployment'] }}-sql-ip.address)
+        type: PRIMARY
+
 
 {% if properties['failover'] %}
 - name: {{ ID }}-failover
