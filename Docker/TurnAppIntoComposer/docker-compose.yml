@@ -9,13 +9,20 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
 
-  webapp:
-    build:
-        context: .
-        args:
-            - NODE_ENV=local
-        dockerfile: Dockerfile_app
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./webapp/public:/code
+      - ./nginx_default.conf:/etc/nginx/conf.d/default.conf  
     links:
       - "db:database"
+      - "php:php"
     ports:
-        - "80:80"
+      - "80:80"
+  php:
+    image: php:7-fpm
+    command: sh -c "docker-php-ext-install pdo pdo_mysql && php-fpm"
+    volumes:
+      - ./webapp/public:/code        
+    links:
+      - "db:database"

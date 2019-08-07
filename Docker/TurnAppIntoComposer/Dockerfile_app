@@ -1,6 +1,0 @@
-FROM richarvey/nginx-php-fpm:latest
-WORKDIR /var/www/html
-RUN ["/bin/bash", "-c", "rm index.php"]
-ADD webapp/ .
-RUN ["/bin/bash", "-c", " sed -i 's@root /var/www/html@root /var/www/html/public@g' /etc/nginx/sites-available/default.conf"] 
-CMD ["/start.sh"]

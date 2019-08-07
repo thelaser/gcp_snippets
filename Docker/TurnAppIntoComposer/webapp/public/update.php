@@ -4,8 +4,8 @@
  * List all users with a link to edit
  */
 
-require "../config.php";
-require "../common.php";
+require "config.php";
+require "common.php";
 
 try {
   $connection = new PDO($dsn, $username, $password, $options);

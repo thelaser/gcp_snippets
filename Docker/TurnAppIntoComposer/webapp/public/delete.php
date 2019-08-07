@@ -4,8 +4,8 @@
  * Delete a user
  */
 
-require "../config.php";
-require "../common.php";
+require "config.php";
+require "common.php";
 
 $success = null;
 
