@@ -9,5 +9,4 @@ In order for this to work, you must have [Docker](https://docs.docker.com/instal
 git clone https://github.com/thelaser/gcp_snippets
 cd gcp_snippets/Docker/TurnAppIntoComposer
 docker-compose up
-
 ```
