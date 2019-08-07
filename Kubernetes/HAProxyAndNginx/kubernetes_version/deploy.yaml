@@ -6,19 +6,15 @@ spec:
   restartPolicy: Never
   containers:
   - name: nginx
-    image: <nginx-img-url>
+    image: gcr.io/myplaygrounds-inter/nginx_container
     ports:
     - containerPort: 5000
-    volumeMounts:
-    - name: workdir
-      mountPath: /usr/share/nginx/html
   # These containers are run during pod initialization
   - name: proxy
-    image: <haproxy-img-url>
+    image: gcr.io/myplaygrounds-inter/haproxy_container
     ports:
     - containerPort: 8080
   dnsPolicy: Default
   volumes:
   - name: workdir
     emptyDir: {}
-

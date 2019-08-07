@@ -1,0 +1,38 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-backend
+spec:
+  selector:
+    app: nginx-backend
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-backend
+spec:
+  selector:
+    matchLabels:
+      app: nginx-backend
+      tier: backend
+      track: stable
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx-backend
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: nginx-backend
+          image: "gcr.io/myplaygrounds-inter/nginx_container"
+          ports:
+            - name: http
+              containerPort: 5000
