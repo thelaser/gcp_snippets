@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bestone
+spec:
+  restartPolicy: Never
+  containers:
+  - name: nginx
+    image: <nginx-img-url>
+    ports:
+    - containerPort: 5000
+    volumeMounts:
+    - name: workdir
+      mountPath: /usr/share/nginx/html
+  # These containers are run during pod initialization
+  - name: proxy
+    image: <haproxy-img-url>
+    ports:
+    - containerPort: 8080
+  dnsPolicy: Default
+  volumes:
+  - name: workdir
+    emptyDir: {}
+
