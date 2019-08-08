@@ -34,4 +34,4 @@ Finally one should first [connect to the cluster](https://cloud.google.com/kuber
 By doing this you will have deployed the samples, to see the IP of the LoadBalancer with your Endpoint you can run:  
 `kubectl get services`
 
-Open up the IP in a browser and happy mooin!1  
+Open up the IP in a browser and happy mooin!!!1!  
