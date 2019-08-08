@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: proxypods
+  labels:
+    app: proxypods
+spec:
+  containers:
+    - name: nginx
+      image: gcr.io/myplaygrounds-inter/nginx_container:latest
+      ports: 
+        - name: serveweb
+          #expose port 8080 from the container
+          containerPort: 5000
+          #map port 8080 from the container to the 80 on the host
+          #hostPort: 80
+      resources:
+        limits:
+          cpu: 0.2
+          memory: "10Mi"
+    - name: haproxy
+      image: gcr.io/myplaygrounds-inter/haproxy_container:latest
+      ports: 
+        - name: proxylisten
+          #expose port 5000 from the port
+          containerPort: 8080
+      resources:
+        limits:
+          cpu: 0.2
+          memory: "10Mi"

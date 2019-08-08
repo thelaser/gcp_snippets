@@ -4,7 +4,9 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install cowsay && \
     apt-get clean && rm -fr /var/lib/apt/lists
 
-RUN /usr/games/cowsay "Mooo! Mooo!" > /root/index.html
+RUN echo "<div style=\"white-space: pre-line\">" > /root/index.html
+RUN /usr/games/cowsay "I'm a Kubercow" | sed 's@ @\&nbsp;\&nbsp;@g' >> /root/index.html
+RUN echo "</div>" >> /root/index.html
 
 FROM nginx
 

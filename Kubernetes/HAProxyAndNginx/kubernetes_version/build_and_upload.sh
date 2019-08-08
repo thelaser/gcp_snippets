@@ -13,5 +13,3 @@ docker push gcr.io/myplaygrounds-inter/haproxy_container
 docker build -t nginx_container -f Dockerfile_nginx .
 docker tag nginx_container gcr.io/$PROJECT/nginx_container
 docker push gcr.io/myplaygrounds-inter/nginx_container
-
-
