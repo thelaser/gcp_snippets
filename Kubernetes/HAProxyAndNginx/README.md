@@ -15,8 +15,7 @@ You can check in another tab or shell that it is actually running by __*curling*
 
 ### To use the kubernetes version
 
-In this version, we create a Pod object which has two containers inside, using the modified versions of the images we created previously, and a Service object,  
-which is in charge of doing the mapping.  
+In this version, we create a Pod object which has two containers inside, using the modified versions of the images we created previously, and a Service object, which is in charge of doing the mapping.  
 
 You will need to have installed kubectl:  
 
