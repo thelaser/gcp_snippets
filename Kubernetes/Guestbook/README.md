@@ -11,8 +11,8 @@ There are a few differences between the guide in the Google Cloud Documentation 
 The images used for the Deployments are also added in their respective folders:
 
 frontend -> ./php-redis/
-slave-redis -> ./slave-redis/
-master-redis -> uses the default image for redis in the docker hub
+redis-slave -> ./redis-slave/
+redis-master -> uses the default image for redis in the docker hub
 
 ## What it does
 
@@ -28,4 +28,8 @@ In order to have this run in a Kubernetes cluster, one must first setup the clus
 
 After that is done, it is a matter of applying these configs:  
 
-`k apply -f frontend.yaml && k apply -f master-redis.yaml && k apply -f slave-redis.yaml`  
+`k apply -f frontend.yaml && k apply -f redis-master.yaml && k apply -f redis-slave.yaml`  
+
+To delete it all:
+
+`k delete deployments frontend redis-master redis-slave && k delete services frontend redis-master redis-slave`
