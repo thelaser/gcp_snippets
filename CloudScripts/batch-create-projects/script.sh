@@ -1,9 +1,28 @@
+### AUTOMATED BATCH PROJECT CREATION TOOL ###
+
+: '
+
+This is a script to automatize the creation of several projects using different accounts, providing a file with the names to be used for the accounts.
+
+An example of usage would be for example this:
+
+./script.sh <containing-folder> <user-organization-ID> <projects-organization-ID> <billing-account-number>
+
+In this case, the script will create as many projects as lines exist in the [name-list] file existing in the same path than the script. These projects will be
+created inside the <containing-folder>, which is a folder that will be created at the root of the organization. The usernames in each line of the [name-list] file will be joined with the name of the
+<user-organization-ID>, so if a user is called juan12 and the organization beverlyhills.com, the resulting string will be [juan12@beverlyhills.com]. The <projects-organization-ID> defines
+the organization where the new projects will be created.
+
+Finally, the billing account number will be the value of the desired billing account to be used.
+
+'
+
 
 # ----------------  TODO ---------
 # - Formatting checkups need to be added (orgid_user and foldername must be valid, billing account format is 0X0X0X-0X0X0X-0X0X0X with A-Z0-9 chars)
 # - The accounts must be created beforehand inside the destination organization
 # - Add USAGE
-# - Fail behavior
+# - Fail behavior, add a method to delete the changes made in case process fails.
 # - Explain requirements: Cloud SDK installed and Beta component installed too.
 
 # SETTING ARGUMENTS ################
@@ -13,7 +32,7 @@
 foldername=$1
 # $orgid_user = organization ID to where the users belong
 orgid_user=$2
-#orgid_folder = organization ID where the projects and folder will be created
+# orgid_folder = organization ID where the projects and folder will be created
 orgid_folder=$3
 # $baccount = billing account
 baccount=$4
@@ -21,10 +40,6 @@ baccount=$4
 tfolderid=$5
 # $namesfile = names-file path
 namesfile='name-list'
-if [ -z "$6" ]
-then
-  namesfile=$6
-fi
 
 ####################################
 
