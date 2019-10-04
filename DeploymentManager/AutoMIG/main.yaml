@@ -1,0 +1,12 @@
+imports:
+- path: instanceTemplate.jinja
+- path: instanceGroups.jinja
+- path: autoscaler.jinja
+
+resources:
+  #- name: instanceTemplate
+  # type: instanceTemplate.jinja
+- name: instanceGroups
+  type: instanceGroups.jinja
+  #- name: autoscaler
+  #  type: autoscaler.jinja

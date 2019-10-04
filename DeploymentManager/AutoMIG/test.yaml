@@ -1,0 +1,6 @@
+resources:
+- name: iainstancetemplate
+  type: compute.v1.instanceTemplate
+  properties:
+    zone: europe-west1-c
+    machineType: https://www.googleapis.com/compute/v1/projects/myplaygrounds-paugarcia/zones/europe-west1-c/machineTypes/f1-micro
