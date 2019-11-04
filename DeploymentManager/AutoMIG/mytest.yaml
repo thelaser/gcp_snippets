@@ -1,6 +1,0 @@
-resources:
-- name: iamtrying
-  type: compute.v1.instanceTemplate
-  properties:
-    properties:
-      zone: europe-west1-c

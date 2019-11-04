@@ -1,0 +1,8 @@
+resources:
+- name: {{ env["deployment"] }}-mig
+  type: compute.v1.instanceGroupManagers
+  properties:
+    zone: {{ properties["zone"] }} 
+    network: projects/{{ env["project"] }}/global/networks/default
+    instanceTemplate: $(ref.{{ env["deployment"] }}-instancetemplate.selfLink)
+    targetSize: 2

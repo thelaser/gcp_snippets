@@ -6,7 +6,7 @@ resources:
       tags:
         items:
         - {{ env["deployment"] }}-tag
-      zone: europe-west1-c
+      zone: {{ properties["zone"] }}
       machineType: f1-micro
       disks:
       - deviceName: {{ env["deployment"] }}-ssddisk
