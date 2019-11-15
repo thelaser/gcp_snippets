@@ -6,7 +6,7 @@ This is a script to automatize the creation of several projects using different 
 
 An example of usage would be for example this:
 
-./script.sh <containing-folder> <user-organization-ID> <projects-organization-ID> <billing-account-number>
+./script.sh <project-containing-folder-name> <user-organization-ID> <projects-organization-ID> <billing-account-number>
 
 In this case, the script will create as many projects as lines exist in the [name-list] file existing in the same path than the script. These projects will be
 created inside the <containing-folder>, which is a folder that will be created at the root of the organization. The usernames in each line of the [name-list] file will be joined with the name of the
