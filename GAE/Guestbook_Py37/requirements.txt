@@ -1,0 +1,5 @@
+webapp3
+jinja2
+google-cloud-datastore
+gunicorn
+Flask
