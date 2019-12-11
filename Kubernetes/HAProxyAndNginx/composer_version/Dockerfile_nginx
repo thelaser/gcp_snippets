@@ -6,6 +6,9 @@ RUN apt-get update && \
 
 RUN /usr/games/cowsay "Mooo! Mooo!" > /root/index.html
 
+# For learning purposes let's copy what we created from the ubuntu image 
+# to a new one created with nginx
+
 FROM nginx
 
 COPY --from=builder /root/index.html /usr/share/nginx/html/index.html
