@@ -13,9 +13,11 @@ created inside the <containing-folder>, which is a folder that will be created a
 <user-organization-ID>, so if a user is called juan12 and the organization beverlyhills.com, the resulting string will be [juan12@beverlyhills.com]. The <projects-organization-ID> defines
 the organization where the new projects will be created.
 
+Please note the [name-list] file only contains usernames, not the domain part of the mail. The script expects "juan12", not "juan12@beverlyhills.com".
+
 Finally, the billing account number will be the value of the desired billing account to be used.
 
-PERMISSIONS
+BEWARE OF THE PERMISSIONS!!!
 
 In order for this script to work, one must have the Cloud SDK installed with gcloud logged into an account with "Folder Creator", "Project Creator" and "Project Billing Manager"
 
@@ -74,6 +76,7 @@ for i in $(cat $namesfile); do
     echo "\n-------------------------------------------------- \n\n"
     user="$i@$orgname_user"
     gcloud resource-manager folders add-iam-policy-binding $folderid --member="user:$user" --role='roles/owner'
+		# FIX: Display below message only if command is successful
     echo "\n\nSet Owner permission for $user in folder $foldername/$folderid \n\n"
 done
 
