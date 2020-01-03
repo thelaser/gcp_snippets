@@ -1,7 +1,21 @@
+################
+# Explanations #
+################
+
 # This script finds and shows the projects owned explicitly by an account in GCP (without counting inheritances from an organization)
 # If run without arguments, it will find the accounts associated with the account being currently used with Cloud SDK
 # It can accept one argument which will be the account to check ownerships for
 
+
+#####################
+# One-liner version #
+#####################
+
+# (for project in $(gcloud projects list --format 'value(project_id)'); do if [ $(gcloud projects get-iam-policy $project --format json 2>/dev/null|jq '.bindings[]|select(.role=="roles/owner").members'|grep -E "user:$(gcloud config get-value account)") ]; then echo $project; fi; done >> myprojects.txt)&
+
+####################
+# Expanded version #
+####################
 
 if [ $1 ]; then
 	ACCOUNT=$1
