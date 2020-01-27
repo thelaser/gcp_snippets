@@ -1,0 +1,72 @@
+<html>
+   <head>
+      <script type = "text/javascript" src ="{{ url_for('static', filename='logic.js') }}"></script>
+   </head>
+ 
+   <body>
+
+
+			<h1> Cloud Tasks and Cloud Task Queues creation </h1>
+	
+			<h2> App Engine
+
+			<h3> Queue creation with App Engine </h2>
+      <form action="/createqueuegae" method="POST">
+				<label> Queue name: </label>
+        <input type="text" name="queue_name" value="myqueue"><br>
+        <label> Location: </label>
+        <input type="text" name="location" value="europe-west2"><br>
+				<label> Project ID: </label>
+        <input type="text" name="project_id" value="myproject"><br><br>
+        
+				<button type="submit">Submit</button>
+      </form>
+
+			<h3> Task creation with App Engine </h2>
+      <form action="/createtaskgae" method="POST">
+
+				<label> Queue name: </label>
+        <input type="text" name="queue_name" value="myqueue"><br>
+        <label> Location: </label>
+        <input type="text" name="location" value="europe-west2"><br>
+				<label> Project ID: </label>
+        <input type="text" name="project_id" value="myproject"><br><br>
+        
+				<button type="submit">Submit</button>
+      </form>
+
+			<h2> Cloud Functions </h2>
+      
+			<h3> Queue creation with Cloud Functions using Python client</h3>
+      <form action="/createqueuecf" method="POST">
+        
+				<label> Queue name: </label>
+        <input type="text" name="queue_name" value="myqueue"><br>
+        <label> Location: </label>
+        <input type="text" name="location" value="europe-west2"><br>
+				<label> Project ID: </label>
+        <input type="text" name="project_id" value="myproject"><br><br>
+        
+				<button type="submit">Submit</button>
+      </form>
+      </form>
+
+			<h3> Task creation with Cloud Functions with Python client </h3>
+      <form action="/createtaskcf" method="POST">
+        
+				<label> Queue name: </label>
+        <input type="text" name="queue_name" value="myqueue"><br>
+        <label> Location: </label>
+        <input type="text" name="location" value="europe-west2"><br>
+				<label> Project ID: </label>
+        <input type="text" name="project_id" value="myproject"><br><br>
+        
+				<button type="submit">Submit</button>
+      </form>
+
+
+			<br><br><br>
+      <button onclick="sayHi()">Say hi</button>
+   </body>
+
+</html>
