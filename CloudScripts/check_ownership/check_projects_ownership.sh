@@ -9,6 +9,12 @@
 # Example of usage:
 # ./check_projects_ownership.sh myaccount@mydomain.com
 
+#########
+# TO DO #
+#########
+
+# - Check if jq is installed
+
 #####################
 # One-liner version #
 #####################
