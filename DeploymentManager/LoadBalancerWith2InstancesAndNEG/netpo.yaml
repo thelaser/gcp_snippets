@@ -1,0 +1,7 @@
+resources:
+- name: heyya
+  type: compute.v1.networkEndpointGroups
+  properties:
+    port: 80
+    instance: my-apache-php-instance-thiss
+    zone: europe-west1-b

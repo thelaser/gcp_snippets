@@ -1,0 +1,42 @@
+resources:
+- name: {{ env["deployment"] }}-instance
+  type: compute.v1.instance
+  properties:
+    metadata:
+      items:
+      - key: penis
+        value: humongous
+      - key: startup-script
+        value: |
+          #! /bin/bash
+          apt update && apt upgrade -y && apt install -y apache2 php
+          cat <<EOF > /var/www/html/index.php
+          <?php
+          echo gethostname(); // may output e.g,: sandie
+          echo php_uname('n'); // may output e.g,: sandie
+          ?>
+          EOF
+          rm /var/www/html/index.html
+    tags:
+      items:
+      - {{ env["deployment"] }}-tag
+      - http-server
+    zone: {{ properties["zone"] }}
+    machineType: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/machineTypes/f1-micro
+    disks:
+    - deviceName: {{ env["deployment"] }}-standarddisk
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-9
+        diskSizeGb: 15
+        diskType: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/zones/{{ properties["zone"] }}/diskTypes/pd-standard
+    networkInterfaces:
+    - network: projects/{{ env["project"] }}/global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+    serviceAccounts:
+    - email: {{ env['project_number'] }}-compute@developer.gserviceaccount.com
+  
