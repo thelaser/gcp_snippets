@@ -20,6 +20,7 @@ You will also need to **own a domain** in order to follow this guide.
 ### 5. Setup OAuth Consent screen with domain
 ### 6. Create OAuth credentials and redirect page
 <br/>
+
 ## Kubernetes meddling
 
 ### 7. Create cluster
@@ -30,6 +31,7 @@ You will also need to **own a domain** in order to follow this guide.
 ### 12. Create a Service referencing the Backend config
 ### 13. Create Ingress referencing the Service and the HTTPS certificate secret
 <br/>
+
 ## Finishing
 
 ### 14. Give yourself permission to access through IAP
@@ -200,6 +202,7 @@ If you put this into a file and wanted to submit it by itself you would just go:
 
 `kubectl apply -f namespace.yaml`
 
+<br/>
 
 ## 9. Create secrets for HTTPS certificates and OAuth token
 
