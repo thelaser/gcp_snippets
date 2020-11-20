@@ -1,0 +1,7 @@
+resources:
+- name: {{ env['deployment'] }}-sql-ip
+  type: compute.v1.addresses
+  properties:
+    name: {{ env['deployment'] }}-sql-ip-deployed
+    region: europe-west1
+    addressType: INTERNAL

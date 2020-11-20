@@ -8,6 +8,6 @@ credentials, project_id = google.auth.default()
 
 resource_manager = googleapiclient.discovery.build('cloudresourcemanager', 'v2', credentials=credentials)
 
-response = resource_manager.folders().list(parent="organizations/383705642747").execute()
+response = resource_manager.folders().list(parent="REPLACE WITH organizations/237891271 like value").execute()
 
 print(response)

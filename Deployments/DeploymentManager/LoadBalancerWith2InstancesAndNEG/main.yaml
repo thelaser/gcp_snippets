@@ -1,0 +1,13 @@
+imports:
+- path: instanceWithPHPNginx.jinja
+- path: instanceWithPHPApache.jinja
+
+resources:
+- name: my-nginx-php-instance
+  type: instanceWithPHPNginx.jinja
+  properties:
+    zone: europe-west1-b
+- name: my-apache-php-instance
+  type: instanceWithPHPApache.jinja
+  properties:
+      zone: europe-west1-b

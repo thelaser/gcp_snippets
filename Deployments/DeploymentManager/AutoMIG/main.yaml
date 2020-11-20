@@ -1,0 +1,18 @@
+imports:
+- path: instanceTemplate.jinja
+- path: managedInstanceGroup.jinja
+- path: autoscaler.jinja
+
+resources:
+- name: instanceTemplate
+  type: instanceTemplate.jinja
+  properties:
+    zone: europe-west1-b
+- name: managedInstanceGroup
+  type: managedInstanceGroup.jinja
+  properties:
+    zone: europe-west1-b
+- name: autoscaler
+  type: autoscaler.jinja
+  properties:
+    zone: europe-west1-b

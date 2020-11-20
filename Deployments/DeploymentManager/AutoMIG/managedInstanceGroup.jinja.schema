@@ -1,0 +1,10 @@
+info:
+  title: mig
+
+required:
+  - zone
+
+properties:
+  zone:
+    description: Zone to create the resources in.
+    type: string

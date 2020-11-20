@@ -1,0 +1,10 @@
+info:
+  title: Autoscaler
+
+required:
+  - zone
+
+properties:
+  zone:
+    description: Zone to create the resources in.
+    type: string

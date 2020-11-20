@@ -1,0 +1,9 @@
+imports:
+- path: addresses.jinja
+- path: instance.jinja
+
+resources:
+- name: mydeployment-address
+  type: addresses.jinja
+- name: mydeployment-instance
+  type: instance.jinja

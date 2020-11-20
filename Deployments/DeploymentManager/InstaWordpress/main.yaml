@@ -1,0 +1,12 @@
+imports:
+- path: sqladdress.jinja
+- path: cloudsql.jinja
+- path: instance.jinja
+
+resources:
+- name: sqladdress
+  type: sqladdress.jinja
+- name: cloudsql
+  type: cloudsql.jinja
+- name: instance
+  type: instance.jinja

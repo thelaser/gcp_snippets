@@ -1,0 +1,109 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: iap-party
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oauth-sec
+  namespace: iap-party
+type: Opaque
+data:
+  client_id: <clientID-in-base64>  ############## REPLACE ###############
+  client_secret: <client_secret_base64>  ############## REPLACE ###############
+# instead of this config above one can also run instead something like 
+# kubectl create secret generic oauth-sec --from-file=client_id=./clientID.txt --from-file=client_secret=./clientsecret.txt -n iap-party
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: https-certs
+  namespace: iap-party
+type: kubernetes.io/tls
+data:
+  # the data is abbreviated in this example
+  tls.crt: |
+    <cert.pem in base64>  ############## REPLACE ###############
+  tls.key: |
+    <privkey.pem in base64>  ############## REPLACE ###############
+# or also
+# kubectl create secret tls https-certs --cert=./cert.pem --key=./privkey.pem -n iap-party
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: iap-back-config
+  namespace: iap-party
+spec:
+  iap:
+    enabled: true
+    oauthclientCredentials:
+      secretName: oauth-sec
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-iap
+  labels:
+    app: hello-iap
+  namespace: iap-party
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-iap
+  template:
+    metadata:
+      labels:
+        app: hello-iap
+    spec:
+      containers:
+        - name: helloitsme
+          image: <link to Docker-image>   ############## REPLACE ###############
+          ports: 
+            - name: listenmain
+              containerPort: 8080
+              hostPort: 80
+          resources:
+            limits:
+              cpu: 0.2
+              memory: "10Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    beta.cloud.google.com/backend-config: '{"default": "iap-back-config"}'
+  labels:
+    app: hello-iap
+  name: iap-service
+  namespace: iap-party
+spec:
+  selector:
+    app: hello-iap
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: iap-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: iap-gke
+  labels:
+    app: hello-iap
+spec:
+  tls:
+  - secretName: https-certs
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: iap-service
+          servicePort: 80

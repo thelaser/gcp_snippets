@@ -1,0 +1,11 @@
+resources:
+- name: {{ env["deployment"] }}-autoscaler
+  type: compute.v1.autoscalers
+  properties:
+    target: $(ref.{{ env["deployment"] }}-mig.selfLink) 
+    autoscalingPolicy:
+      minNumReplicas: 2
+      maxNumReplicas: 5
+      cpuUtilization:
+        utilizationTarget: 0.6 
+    zone: {{ properties["zone"] }} 

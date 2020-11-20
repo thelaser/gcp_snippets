@@ -1,0 +1,7 @@
+resources:
+- name: heyya
+  type: compute.v1.networkEndpointGroups
+  properties:
+    name: hello
+    zone: europe-west1-b
+    networkEndpointType: GCE_VM_IP_PORT

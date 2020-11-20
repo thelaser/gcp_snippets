@@ -1,0 +1,27 @@
+resources:
+- name: {{ env["deployment"] }}-instancetemplate
+  type: compute.v1.instanceTemplate
+  properties:
+    properties:
+      tags:
+        items:
+				/home/paugarcia/gcp_snippets/DeploymentManager/AutoMIG
+        - {{ env["deployment"] }}-tag
+      zone: {{ properties["zone"] }}
+      machineType: f1-micro
+      disks:
+      - deviceName: {{ env["deployment"] }}-ssddisk
+        type: PERSISTENT
+        boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-9
+          diskSizeGb: 20
+          diskType: pd-ssd
+      networkInterfaces:
+      - network: projects/{{ env["project"] }}/global/networks/default
+        accessConfigs:
+        - name: External NAT
+          type: ONE_TO_ONE_NAT
+      serviceAccounts:
+      - email: {{ env['project_number'] }}-compute@developer.gserviceaccount.com

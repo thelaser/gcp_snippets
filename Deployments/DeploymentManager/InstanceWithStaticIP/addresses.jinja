@@ -1,0 +1,8 @@
+resources:
+- name: {{ env["deployment"] }}-deployedip
+  type: compute.v1.addresses
+  properties:
+    name: {{ env["deployment"] }}-ipdeployed
+    region: europe-west1
+    networkTier: PREMIUM
+    addressType: EXTERNAL
