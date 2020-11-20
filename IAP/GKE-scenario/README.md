@@ -14,7 +14,7 @@ You will also need to **own a domain** in order to follow this guide.
 ## Preparing
 
 ### 1. Create a domain for our example
-### 2. Create a LetsEncrypt HTTPS certificates for the domain 
+### 2. Create a LetsEncrypt HTTPS certificate for the domain 
 ### 3. Create a static global IP address and firewall rules for IAP
 ### 4. Prepare Docker image for deployment
 ### 5. Setup OAuth Consent screen with domain
