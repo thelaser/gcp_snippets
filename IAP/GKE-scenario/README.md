@@ -403,6 +403,7 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: iap-gke
   labels:
     app: hello-iap
+  namespace: iap-party 
 spec:
   tls:
   - secretName: https-certs
