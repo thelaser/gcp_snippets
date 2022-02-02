@@ -2,9 +2,9 @@ The classical auto-deleting bucket
 
 The Cloud SDK looks for a main.py file if using Python, as stated in the [docs](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--source)
 
-Can be created or updated with the following command:
+Can be created or updated with the following command([reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy):
 
-`gcloud functions deploy --region europe-west1 --runtime=python37 --trigger-event=google.storage.object.finalize --trigger-resource=obrasdearte autodeleter`
+`gcloud functions deploy --region europe-west1 --runtime=python37 --trigger-event=google.storage.object.finalize --trigger-resource=<your-bucket> --entry-point=getrekt autodeleter`
 
 If it fails, read logs with:
 
