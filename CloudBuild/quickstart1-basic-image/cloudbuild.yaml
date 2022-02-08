@@ -1,0 +1,25 @@
+#mytest is an Artifact Registry repo name, you should change it to your own repo which should be created before running this.
+
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'europe-west1-docker.pkg.dev/${PROJECT_ID}/mytest/mynginximage', 
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+           'europe-west1-docker.pkg.dev/${PROJECT_ID}/mytest/mynginximage']
+
+  # Entrypoint, timeout and environment variables
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    timeout: 240s
+    args: ['compute', 'instances', 
+           'create-with-container', 'my-vm-name',
+           '--container-image', 
+           'europe-west1-docker.pkg.dev/${PROJECT_ID}/mytest/mynginximage']
+    env:
+      - 'CLOUDSDK_COMPUTE_REGION=europe-west1'
+      - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
