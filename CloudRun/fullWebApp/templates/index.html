@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>(Type a title for your page here)</title>
+	<script type="text/javascript"> 
+		function display_c(){
+			var refresh=1000; // Refresh rate in milli seconds
+			mytime=setTimeout('display_ct()',refresh)
+		}
+
+		function display_ct() {
+			var x = new Date()
+			document.getElementById('ct').innerHTML = x;
+			display_c();
+	 }
+	</script>
+        <script type = "text/javascript" src ="{{ url_for('static', filename='logic.js') }}"></script>
+	</head>
+
+	<body onload=display_ct();>
+		<span id='ct' ></span>
+	        <button onclick="sayHi()">Say hi</button>
+
+	        <form action="/sendMessage" method="get">
+	          <button type="submit"> Send </button>
+	        </form>
+
+	</body>
+</html>
