@@ -1,15 +1,15 @@
-#Intro
+# Intro
 
-There are different ways to use Firestore, one of them is to use a Firebase SDK, which would mean that the Firestore database is hosted in Firebase and specifically in a Firebase project. This is the case for [this guide](https://cloud.google.com/community/tutorials/building-flask-api-with-cloud-firestore-and-deploying-to-cloud-run) from which I take inspiration. But in my case I will be using a Firestore database in GCP, which also integrates it, and for that I will be using Python Cloud libraries for Firestore. Therefore the code in the guide I referenced a few lines above needs some modifications.
+There are different ways to interact with Firestore, one of them is to use the Firebase SDK, which would mean that the Firestore database is hosted in Firebase and specifically in a Firebase project. This is the case for [this guide](https://cloud.google.com/community/tutorials/building-flask-api-with-cloud-firestore-and-deploying-to-cloud-run) from which I take inspiration. But in my case I will be using a Firestore database in GCP, which also integrates this kind of database, and for that I will be using the Python Cloud libraries for Firestore. Therefore the code in the guide I referenced a few lines above needs some modifications, which were applied in order for the GCP libraries to work.
 
-## Steps I followed to create this 
+## Steps followed to create the scenario
 
 Before running any of the following commands, make sure you have configured the gcloud CLI to the project where you want to deploy this example:
 ```
 gcloud config set project <yourProjectID>
 ```
 
-### Create SA for scenario and download JSON key for local testing
+### Create an SA for the scenario and download JSON key for local testing
 ```
 export PROJECT_ID=<yourProjectID>
 gcloud iam service-accounts create sample-firestore --display-name="Example firestore SA"
@@ -25,9 +25,11 @@ The files needed will be the **main.py** to run the Flask code to do the request
 I changed the code in the guide referenced above, so that app.py will use the [Cloud Libraries for Firestore](https://googleapis.dev/python/firestore/latest/index.html) instead of the Firebase SDK. Also, for local debugging(running the Flask app in a container locally using Docker), I used the [Auth libraries](https://googleapis.dev/python/google-auth/latest/user-guide.html#obtaining-credentials) to load a service account JSON key file.
 
 Debug commands:
+```
 docker build -t firebasetest . && docker run -p 80:80 firebasetest
 curl localhost/add -H 'Content-Type: application/json' -d '{"hello":"my_hello","bye":"my_bye", "id":"works"}'
 curl localhost/list 
+```
 
 Once I made sure the /add and /list functions worked in my local testing environment, by running the above curl commands and seeing changes reflected both in the /list and by looking the Firestore section in my GCP project, I moved to the next part: making this work with Cloud Run.
 
@@ -61,7 +63,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:samp
 
 ### Deploying
 
-gcloud run deploy --allow-unauthenticated --source . --region europe-west1 --service-account <previouslyCreatedSAAddress> firetest
+`gcloud run deploy --allow-unauthenticated --source . --region europe-west1 --service-account <previouslyCreatedSAAddress> firetest`
 
 NOTE: If it's the first you use Cloud Run and activate all the APIs, including **Cloud Build** most likely it will fail with something similar to this:
 
