@@ -1,4 +1,6 @@
-# Intro
+# Interacting with a Firestore database from a Cloud Run app
+
+## Intro
 
 There are different ways to interact with Firestore, one of them is to use the Firebase SDK, which would mean that the Firestore database is hosted in Firebase and specifically in a Firebase project. This is the case for [this guide](https://cloud.google.com/community/tutorials/building-flask-api-with-cloud-firestore-and-deploying-to-cloud-run) from which I take inspiration. But in my case I will be using a Firestore database in GCP, which also integrates this kind of database, and for that I will be using the Python Cloud libraries for Firestore. Therefore the code in the guide I referenced a few lines above needs some modifications, which were applied in order for the GCP libraries to work.
 
