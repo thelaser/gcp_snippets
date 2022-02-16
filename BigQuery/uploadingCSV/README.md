@@ -9,9 +9,9 @@ Upload to bucket
 Set the right project:
 `gcloud config set project $PROJECT_ID`
 
-Set right permissions:
-`gcloud projects add-iam-policy-binding $PROJECT --member="user:$USER_ACC" --role="roles/bigquery.admin"`
-`gcloud projects add-iam-policy-binding $PROJECT --member="user:$USER_ACC" --role="roles/storage.admin"`
+Set right permissions:  
+`gcloud projects add-iam-policy-binding $PROJECT --member="user:$USER_ACC" --role="roles/bigquery.admin"`  
+`gcloud projects add-iam-policy-binding $PROJECT --member="user:$USER_ACC" --role="roles/storage.admin"`  
 
 Create a dataset and a table, then load the file.
 ```
